@@ -17,9 +17,9 @@ $data = json_decode(file_get_contents("php://input"));
 
 //set value to Model variable
 $trip->user_id = $data->user_id;
+$trip->location_name = $data->location_name;
 $trip->start_date = $data->start_date;
 $trip->end_date = $data->end_date;
-$trip->location_name = $data->location_name;
 $trip->latitude = $data->latitude;
 $trip->longitude = $data->longitude;
 $trip->cost = $data->cost;
