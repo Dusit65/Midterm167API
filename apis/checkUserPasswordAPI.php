@@ -31,8 +31,10 @@ if ($result->rowCount() > 0) {
         "message" => "1",
         "user_id" => strval($user_id),
         "username" => $username,
-        "password" => $password,
-        "email" => $email
+        "password" => $password, 
+        "email" => $email,
+        "userImage" => $userImage
+
         
         
     );

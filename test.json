@@ -21,14 +21,13 @@
  {
     "trip_id":"5",
     "user_id":"5",
-    "trip_id":"5",
-    "start_date":"5",
-    "end_date":"5",
+    "start_date":"2023-11-30",
+    "end_date":"2023-11-30",
     "location_name":"5",
     "latitude":"5",
     "longitude":"5",
     "cost":"5",
-     "tripImage":""
+    "tripImage":""
  }
 
 //  delete

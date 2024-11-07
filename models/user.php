@@ -9,6 +9,7 @@ class User {
     public $username;
     public $password;
     public $email;
+    public $userImage;
 
     //ตัวแปรสารพัดประโยชน์
     public $message;
@@ -21,7 +22,7 @@ class User {
     //function การทำงานที่ล้อกับส่วนของ apis
 
     public function checkUserPassword(){
-        $strSQL = "SELECT * FROM myprofile_tb WHERE username = :username AND password = :password";
+    $strSQL = "SELECT * FROM myprofile_tb WHERE username = :username AND password = :password";
 
     $this->username = htmlspecialchars(strip_tags($this->username));
     $this->password = htmlspecialchars(strip_tags($this->password));
@@ -45,23 +46,25 @@ class User {
     public function newUser(){
     //ตัวแปรคำสั่งsql
     $strSQL = "INSERT INTO myprofile_tb
-    (username,password,email) 
+    (username,password,email,userImage) 
     VALUES
-    (:username,:password,:email)";
+    (:username,:password,:email,:userImage)";
         
     $this->username = htmlspecialchars(strip_tags($this->username));
     $this->password = htmlspecialchars(strip_tags($this->password));
     $this->email = htmlspecialchars(strip_tags($this->email));
+    $this->userImage = htmlspecialchars(strip_tags($this->userImage));
+    
     
 
     //สร้างตัวแปรสที่ใช้ทำงานกับคำสั่งsql
     $stmt = $this->connDB->prepare($strSQL);
 
     //เอาที่ผ่านตรวจสอบแล้วไปกำหนดให้กับ parameter 
-
     $stmt->bindParam(":username", $this->username);
     $stmt->bindParam(":password", $this->password);
     $stmt->bindParam(":email", $this->email);
+    $stmt->bindParam(":userImage", $this->userImage);
     
 
     //สั่งsqlให้ทำงาน

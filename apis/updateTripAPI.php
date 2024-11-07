@@ -25,20 +25,20 @@ $trip->longitude = $data->longitude;
 $trip->cost = $data->cost;
 
 //กรณี แก้ไข ต้องตรวจสอบก่อนว่ามีการอัพโหลดรูปภาพหรือไม่
-if(isset($data->$tripImage)){
+if(isset($data->tripImage)){
     //------------------------จัดการรูป อัปโหลด ใช้base64---------------------------------
     //เอารูปที่ส่งมาซึ่งเป็นbase64 เก็บไว้ในตัวแปรตัวหนึ่ง
-    $picture_temp = $data->$tripImage;
+    $picture_temp = $data->tripImage;
     //ตั้งชื่อรูปใหม่เพื่อใช้กับbase 64
     $picture_filename = "pic_" . uniqid() . "_" . round(microtime(true)*1000) . ".jpg";
     //เอารูปที่ส่งมาซึ้งเป็นbase64 แปลงให้เป็นรูปภาพ แล้วเอาไปไว้ที่ pickupload/food/
     //file_putcontents(ที่อยู่ของรูป, ตัวไฟล์ที่จะอัพโหลด);
     file_put_contents( "./../pickupload/trip/".$picture_filename, base64_decode(string: $picture_temp));
     //เอาชื่อไฟล์ไปกำหนให้กับตัวแปรที่จะเก็บลงตารางฐานข้อมูล
-    $trip->$tripImage = $picture_filename;
+    $trip->tripImage = $picture_filename;
     //---------------------------------------------------------------------------------
     }else{
-        $trip->$tripImage = "";
+        $trip->tripImage = "";
     }
 
 

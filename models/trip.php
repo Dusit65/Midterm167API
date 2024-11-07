@@ -123,8 +123,8 @@ class Trip {
 
         $stmt = $this->connDB->prepare($strSQL);
         $stmt->bindParam(":user_id", $this->user_id);
-        $stmt->bindParam(":min_cost", $this->min_cost);
-        $stmt->bindParam(":max_cost", $this->max_cost);
+        // $stmt->bindParam(":min_cost", $this->min_cost);
+        // $stmt->bindParam(":max_cost", $this->max_cost);
         $stmt->execute();
         return $stmt;
     }
@@ -142,7 +142,7 @@ public function updateTripAPI()
         location_name = :location_name,
         latitude = :latitude,
         longitude = :longitude,
-        cost = :cost,
+        cost = :cost
         WHERE trip_id = :trip_id;";
     } else {
         $strSQL = "UPDATE 
