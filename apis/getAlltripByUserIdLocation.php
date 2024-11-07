@@ -18,7 +18,7 @@ $data = json_decode(file_get_contents("php://input"));
 //If else ตรวจสอบค่าว่างหรือไม่
 If(!empty($data->min_cost) && !empty($data->max_cost)){
     $trip->user_id = $data->user_id;
-    trip->location_name = $data->location_name;
+    $trip->location_name = $data->location_name;
 
     $result = $trip->getAlltripByUserIdLocation();
 
