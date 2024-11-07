@@ -37,8 +37,8 @@ if($result->rowCount() > 0){
             "location_name" => $location_name,
             "latitude" => $latitude,
             "longitude" => $longitude,
-            "cost" => $cost
-
+            "cost" => $cost,
+            "tripImage" => $tripImage
         );
     
         array_push($resultInfo, $resultArray);

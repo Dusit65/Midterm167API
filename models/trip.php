@@ -13,6 +13,7 @@ class Trip {
     public $latitude;
     public $longitude;
     public $cost;
+    public $tripImage;
 
     //ตัวแปรสารพัดประโยชน์
     public $message;
@@ -29,9 +30,9 @@ class Trip {
     {
     //ตัวแปรคำสั่งsql
     $strSQL = "INSERT INTO trip_tb 
-    (user_id,start_date,end_date,location_name,latitude,longitude,cost) 
+    (user_id,start_date,end_date,location_name,latitude,longitude,cost,tripImage) 
     VALUES
-    (:user_id,:start_date,:end_date,:location_name,:latitude,:longitude,:cost)";
+    (:user_id,:start_date,:end_date,:location_name,:latitude,:longitude,:cost,:tripImage);";
         
     $this->user_id = htmlspecialchars(strip_tags($this->user_id));
     $this->start_date = htmlspecialchars(strip_tags($this->start_date));
@@ -40,6 +41,8 @@ class Trip {
     $this->latitude = htmlspecialchars(strip_tags($this->latitude));
     $this->longitude = htmlspecialchars(strip_tags($this->longitude));
     $this->cost = htmlspecialchars(strip_tags($this->cost));
+    $this->tripImage = htmlspecialchars(strip_tags($this->tripImage));
+
     
     //สร้างตัวแปรสที่ใช้ทำงานกับคำสั่งsql
     $stmt = $this->connDB->prepare($strSQL);
@@ -53,6 +56,7 @@ class Trip {
     $stmt->bindParam(":latitude", $this->latitude);
     $stmt->bindParam(":longitude", $this->longitude);
     $stmt->bindParam(":cost", $this->cost);
+    $stmt->bindParam(":tripImage", $this->tripImage);
     
     
 
@@ -70,9 +74,7 @@ class Trip {
     {
         $strSQL = "SELECT * FROM trip_tb WHERE user_id = :user_id";
         $this->user_id = intval(htmlspecialchars(strip_tags($this->user_id)));
-
         $stmt = $this->connDB->prepare($strSQL);
-        
         $stmt->bindParam(":user_id", $this->user_id);
         $stmt->execute();
         return $stmt;
@@ -127,19 +129,34 @@ class Trip {
         return $stmt;
     }
 
-    //function updateTrip
-public function updateTrip(){   
-    
-    $strSQL = "UPDATE trip_tb SET 
-    user_id = :user_id, 
-    start_date = :start_date, 
-    end_date = :end_date,
-    location_name = :location_name,
-    latitude = :latitude,
-    longitude = :longitude,
-    cost = :cost
-    WHERE trip_id = :trip_id;";
-    
+    //function updateTripAPI
+public function updateTripAPI()
+{  
+    $strSQL = "";
+    if ($this->tripImage == "") {
+        $strSQL = "UPDATE 
+        trip_tb SET 
+        user_id = :user_id, 
+        start_date = :start_date, 
+        end_date = :end_date,
+        location_name = :location_name,
+        latitude = :latitude,
+        longitude = :longitude,
+        cost = :cost,
+        WHERE trip_id = :trip_id;";
+    } else {
+        $strSQL = "UPDATE 
+        trip_tb SET 
+        user_id = :user_id, 
+        start_date = :start_date, 
+        end_date = :end_date,
+        location_name = :location_name,
+        latitude = :latitude,
+        longitude = :longitude,
+        cost = :cost,
+        tripImage = :tripImage
+        WHERE trip_id = :trip_id;";
+    }
     //ตรวจสอบค่าที่ถูกส่งจาก Client/User ก่อนที่จะกำหนดให้กับ parameters (:????)
     
     $this->trip_id = intval(htmlspecialchars(strip_tags($this->trip_id)));
@@ -150,6 +167,9 @@ public function updateTrip(){
     $this->latitude = htmlspecialchars(strip_tags($this->latitude));
     $this->longitude = htmlspecialchars(strip_tags($this->longitude));
     $this->cost = htmlspecialchars(strip_tags($this->cost));
+    if ($this->tripImage != "") {
+        $this->tripImage = htmlspecialchars(strip_tags($this->tripImage));
+        }
 
     //สร้างตัวแปรที่ใช้ทำงานกับคำสั่ง SQL
     $stmt = $this->connDB->prepare($strSQL);
@@ -164,6 +184,9 @@ public function updateTrip(){
     $stmt->bindParam(":latitude", $this->latitude);
     $stmt->bindParam(":longitude", $this->longitude);
     $stmt->bindParam(":cost", $this->cost);
+    if ($this->tripImage != "") {
+        $stmt->bindParam(":tripImage", $this->tripImage);
+        }
 
     //สั่งให้ SQL ทำงาน และส่งผลลัพธ์ว่าเพิ่มข้อมูลสําเร็จหรือไม่
     if ($stmt->execute()) {

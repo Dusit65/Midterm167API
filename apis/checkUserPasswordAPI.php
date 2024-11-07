@@ -34,6 +34,7 @@ if ($result->rowCount() > 0) {
         "password" => $password,
         "email" => $email
         
+        
     );
     echo json_encode($resultArray, JSON_UNESCAPED_UNICODE);
     //echo json_encode(array("message" => "เข้าสู่ระบบ!!"));

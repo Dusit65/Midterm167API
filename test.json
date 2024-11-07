@@ -13,7 +13,8 @@
     "location_name":"Osaka",
     "latitude":"100.5",
     "longitude":"200.5",
-    "cost":"3000.00"
+    "cost":"3000.00",
+    "tripImage":""
 }
 
  //update
@@ -26,7 +27,8 @@
     "location_name":"5",
     "latitude":"5",
     "longitude":"5",
-    "cost":"5"
+    "cost":"5",
+     "tripImage":""
  }
 
 //  delete
