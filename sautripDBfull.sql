@@ -30,7 +30,7 @@ CREATE TABLE `myprofile_tb` (
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `userImage` varchar(100) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `myprofile_tb` (
 --
 
 /*!40000 ALTER TABLE `myprofile_tb` DISABLE KEYS */;
-INSERT INTO `myprofile_tb` VALUES (1,'ds','1','dusit65@email.com','2024-11-06 14:42:08',''),(2,'nkm','1','nekima72@gmail.com','2024-11-06 14:42:08',''),(16,'neko','1','NekoNyaaa@mail.com','2024-11-07 06:17:08','pic_672c5b64eeed6_1730960228979.jpg');
+INSERT INTO `myprofile_tb` VALUES (1,'ds','1','dusit65@email.com','2024-11-11 12:36:38','img1.png'),(2,'nkm','1','nekima72@gmail.com','2024-11-11 12:36:38','img2.png'),(16,'neko','1','NekoNyaaa@mail.com','2024-11-07 06:17:08','pic_672c5b64eeed6_1730960228979.jpg'),(17,'','','','2024-11-11 14:59:21','pic_67321bc9f1b4d_1731337161990.jpg');
 /*!40000 ALTER TABLE `myprofile_tb` ENABLE KEYS */;
 
 --
@@ -59,8 +59,10 @@ CREATE TABLE `trip_tb` (
   `cost` decimal(10,2) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `tripImage` varchar(100) NOT NULL,
+  `tripImage2` varchar(100) NOT NULL,
+  `tripImage3` varchar(100) NOT NULL,
   PRIMARY KEY (`trip_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +70,7 @@ CREATE TABLE `trip_tb` (
 --
 
 /*!40000 ALTER TABLE `trip_tb` DISABLE KEYS */;
-INSERT INTO `trip_tb` VALUES (1,1,'2023-09-25','2023-09-28','Hokkaido',40.71277600,-74.00597400,1500.00,'2024-11-06 16:26:48','img1.png'),(2,2,'2023-10-01','2023-10-05','Akita',34.05223500,-118.24368300,2000.00,'2024-11-06 16:26:48','img2.png'),(3,1,'2023-10-10','2023-10-15','Iwate',48.85661300,2.35222200,2500.00,'2024-11-06 16:26:48','img3.png'),(4,2,'2023-11-01','2023-11-07','Tokyo',35.68948700,139.69171100,3000.00,'2024-11-06 16:26:48','img4.png'),(7,2,'2024-10-10','2024-10-20','Aomori',99.99999999,999.99999999,30000.00,'2024-11-06 16:26:48','img4.png');
+INSERT INTO `trip_tb` VALUES (1,1,'2023-09-25','2023-09-28','Hokkaido',40.71277600,-74.00597400,1500.00,'2024-11-11 14:19:56','img1.png','img1.png','img1.png'),(2,2,'2023-10-01','2023-10-05','Akita',34.05223500,-118.24368300,2000.00,'2024-11-11 14:19:56','img2.png','img2.png','img2.png'),(3,1,'2023-10-10','2023-10-15','Iwate',48.85661300,2.35222200,2500.00,'2024-11-11 14:19:56','img3.png','img3.png','img3.png'),(4,2,'2023-11-01','2023-11-07','Tokyo',35.68948700,139.69171100,3000.00,'2024-11-11 14:19:56','img4.png','img4.png','img4.png'),(7,2,'2023-11-25','2023-11-30','Osaka',99.99999999,200.50000000,3000.00,'2024-11-11 14:33:36','img1.png','img1.png','img1.png'),(23,2,'2023-11-25','2023-11-30','Osaka',99.99999999,200.50000000,3000.00,'2024-11-11 14:33:36','img3.png','img3.png','img3.png'),(33,2,'2024-11-11','2024-12-27','Kivotos',13.73939440,100.45015020,2438.00,'2024-11-11 15:38:47','pic1_673225078fa02_1731339527588.jpg','pic2_673225078fa08_1731339527588.jpg','pic3_673225078fa09_1731339527588.jpg');
 /*!40000 ALTER TABLE `trip_tb` ENABLE KEYS */;
 
 --
@@ -84,4 +86,4 @@ INSERT INTO `trip_tb` VALUES (1,1,'2023-09-25','2023-09-28','Hokkaido',40.712776
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-07 13:28:33
+-- Dump completed on 2024-11-11 22:42:07
