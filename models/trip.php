@@ -14,6 +14,8 @@ class Trip {
     public $longitude;
     public $cost;
     public $tripImage;
+    public $tripImage2;
+    public $tripImage3;
 
     //ตัวแปรสารพัดประโยชน์
     public $message;
@@ -30,9 +32,9 @@ class Trip {
     {
     //ตัวแปรคำสั่งsql
     $strSQL = "INSERT INTO trip_tb 
-    (user_id,start_date,end_date,location_name,latitude,longitude,cost,tripImage) 
+    (user_id,start_date,end_date,location_name,latitude,longitude,cost,tripImage,tripImage2,tripImage3) 
     VALUES
-    (:user_id,:start_date,:end_date,:location_name,:latitude,:longitude,:cost,:tripImage);";
+    (:user_id,:start_date,:end_date,:location_name,:latitude,:longitude,:cost,:tripImage,:tripImage2,:tripImage3);";
         
     $this->user_id = htmlspecialchars(strip_tags($this->user_id));
     $this->start_date = htmlspecialchars(strip_tags($this->start_date));
@@ -42,6 +44,8 @@ class Trip {
     $this->longitude = htmlspecialchars(strip_tags($this->longitude));
     $this->cost = htmlspecialchars(strip_tags($this->cost));
     $this->tripImage = htmlspecialchars(strip_tags($this->tripImage));
+    $this->tripImage2 = htmlspecialchars(strip_tags($this->tripImage2));
+    $this->tripImage3 = htmlspecialchars(strip_tags($this->tripImage3));
 
     
     //สร้างตัวแปรสที่ใช้ทำงานกับคำสั่งsql
@@ -57,6 +61,8 @@ class Trip {
     $stmt->bindParam(":longitude", $this->longitude);
     $stmt->bindParam(":cost", $this->cost);
     $stmt->bindParam(":tripImage", $this->tripImage);
+    $stmt->bindParam(":tripImage2", $this->tripImage2);
+    $stmt->bindParam(":tripImage3", $this->tripImage3);
     
     
 
@@ -133,7 +139,7 @@ class Trip {
 public function updateTripAPI()
 {  
     $strSQL = "";
-    if ($this->tripImage == "") {
+    if ($this->tripImage == "" && $this->tripImage2 == "" && $this->tripImage3 == "") {
         $strSQL = "UPDATE 
         trip_tb SET 
         user_id = :user_id, 
@@ -154,7 +160,9 @@ public function updateTripAPI()
         latitude = :latitude,
         longitude = :longitude,
         cost = :cost,
-        tripImage = :tripImage
+        tripImage = :tripImage,
+        tripImage2 = :tripImage2,
+        tripImage3 = :tripImage3
         WHERE trip_id = :trip_id;";
     }
     //ตรวจสอบค่าที่ถูกส่งจาก Client/User ก่อนที่จะกำหนดให้กับ parameters (:????)
@@ -167,8 +175,11 @@ public function updateTripAPI()
     $this->latitude = htmlspecialchars(strip_tags($this->latitude));
     $this->longitude = htmlspecialchars(strip_tags($this->longitude));
     $this->cost = htmlspecialchars(strip_tags($this->cost));
-    if ($this->tripImage != "") {
+    if ($this->tripImage != "" && $this->tripImage2 != "" && $this->tripImage3 != "") {
         $this->tripImage = htmlspecialchars(strip_tags($this->tripImage));
+        $this->tripImage2 = htmlspecialchars(strip_tags($this->tripImage2));
+        $this->tripImage3 = htmlspecialchars(strip_tags($this->tripImage3));
+
         }
 
     //สร้างตัวแปรที่ใช้ทำงานกับคำสั่ง SQL
@@ -184,8 +195,10 @@ public function updateTripAPI()
     $stmt->bindParam(":latitude", $this->latitude);
     $stmt->bindParam(":longitude", $this->longitude);
     $stmt->bindParam(":cost", $this->cost);
-    if ($this->tripImage != "") {
+    if ($this->tripImage != "" && $this->tripImage2 != "" && $this->tripImage3 != "") {
         $stmt->bindParam(":tripImage", $this->tripImage);
+        $stmt->bindParam(":tripImage2", $this->tripImage2);
+        $stmt->bindParam(":tripImage3", $this->tripImage3);
         }
 
     //สั่งให้ SQL ทำงาน และส่งผลลัพธ์ว่าเพิ่มข้อมูลสําเร็จหรือไม่

@@ -38,7 +38,9 @@ if($result->rowCount() > 0){
             "latitude" => $latitude,
             "longitude" => $longitude,
             "cost" => $cost,
-            "tripImage" => $tripImage
+            "tripImage" => $tripImage,
+            "tripImage2" => $tripImage2,
+            "tripImage3" => $tripImage3,
         );
     
         array_push($resultInfo, $resultArray);

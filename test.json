@@ -14,7 +14,9 @@
     "latitude":"100.5",
     "longitude":"200.5",
     "cost":"3000.00",
-    "tripImage":""
+    "tripImage":"",
+    "tripImage2":"",
+    "tripImage3":""
 }
 
  //update
@@ -27,7 +29,9 @@
     "latitude":"5",
     "longitude":"5",
     "cost":"5",
-    "tripImage":""
+    "tripImage":"",
+    "tripImage2":"",
+    "tripImage3":""
  }
 
 //  delete
