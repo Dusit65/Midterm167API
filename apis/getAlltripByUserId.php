@@ -30,8 +30,8 @@ if($result->rowCount() > 0){
         //สร้างตัวแปรอาร์เรย์เก็บข้อมูล
         $resultArray = array(
             "message" => "1",
-            "trip_id" => $trip_id,
-            "user_id" => $user_id,
+            "trip_id" => strval($trip_id),
+            "user_id" => strval($user_id),
             "start_date" => $start_date,
             "end_date" => $end_date,
             "location_name" => $location_name,
@@ -40,9 +40,8 @@ if($result->rowCount() > 0){
             "cost" => $cost,
             "tripImage" => $tripImage,
             "tripImage2" => $tripImage2,
-            "tripImage3" => $tripImage3,
+            "tripImage3" => $tripImage3
         );
-    
         array_push($resultInfo, $resultArray);
     }
 
@@ -51,4 +50,3 @@ if($result->rowCount() > 0){
     //ไม่มี
     echo json_encode(array("message" => "0"));
 }
-?>
